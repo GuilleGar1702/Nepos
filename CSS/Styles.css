@@ -1,20 +1,48 @@
-body{
-    margin: 0%;
+*{
+    font-family: sans-serif;
 }
 
-header{
-    width: 100%;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    background-color: #011526;
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0%;
+    background-image: radial-gradient(#003840, #00494e, #005A5B, #006762);
+    background-size: 800% 800%;
+    animation: backgroundAnimation 10s ease infinite;
 }
-#header{
-    width: 95%;
+
+@keyframes backgroundAnimation {
+    0%{
+        background-position: 0% 50%;
+    }50%{
+        background-position: 100% 50%;
+    }100%{
+        background-position: 0% 50%;
+    }
+}
+
+
+
+
+
+#Nepos{
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#headerNepos{
+    z-index: 2;
+    position: sticky;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 76px;
     display: flex;
     color: white;
     justify-content: space-between;
     align-items: center;
+    background-color: #011526;
 }
 
 #logo{
@@ -31,42 +59,49 @@ header{
 #menuButtonHaver{
     display: flex;
     width: 10%;
+    align-items: center;
+    align-content: center;
 }
 
 
 #chatBody{
-    background-color: #012E40;
+    
     position: absolute;
     left: 0;
     right: 0;
     top: 75px;
+    
+}
+#messages{
+    z-index: 1;
+    height: fit-content;
+    position: absolute;
+    top:0px;
     bottom: 0px;
+    right: 10px;
+    left: 10px;
+    display: grid;
+    padding-bottom: 75px;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#inputHaver{
-    position: absolute;
+#userInput{
+    z-index: 2;
+    position: fixed;
     bottom: 1%;
     left: 2%;
     right: 2%;
     height: auto;
-
+    background-color: transparent;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+#inputHaver{
+    width: 85%;
+    height: auto;
     background-color: #011526;
     display: flex;
     border-radius: 50px;
@@ -86,6 +121,63 @@ header{
     resize: none;
 }
 
+#userInput button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    aspect-ratio: 1/1;
+    background-color: #011526;
+    border-style: none;
+    color: white;
+    border-radius: 50%;
+}
+#userInput button img{
+    width: 75%;
+}
+
+
+
+/*------------------- Bubbles -------------------*/
+
+.userBubble{
+    width: 75%;
+    height: fit-content;
+    color: white;
+    background-color: #011526;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    overflow-wrap: break-word;
+    padding: 3%;
+    justify-self: right;
+    margin-top: 10px;
+    
+}
+.neposBubble{
+    width: 75%;
+    height: fit-content;
+    color: white;
+    background-color: #041d33;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    overflow-wrap: break-word;
+    padding: 3%;
+    justify-self: left;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*------------------- Hamburger -------------------*/
@@ -97,11 +189,13 @@ header{
     display: grid;
     align-content: space-between;
 }
-#barra1, #barra2, #barra3{
+#bar1, #bar2, #bar3{
     background-color: white;
     width: 100%;
     height: 3px;
     border-radius: 5px;
+    margin: 0%;
+    padding: 0%;
 }
 
 .animated-button1{
@@ -118,8 +212,6 @@ header{
     0%{}
     100%{
         transform: rotate(45deg);
-        margin:0%;
-        margin-bottom: -8%;
     }
 }
 @keyframes ani2 {
@@ -127,7 +219,6 @@ header{
     100%{
         width: 0%;
         height: 0%;
-        margin:0%;
         display: none;
     }
 }
@@ -135,8 +226,6 @@ header{
     0%{}
     100%{
         transform: rotate(-90deg);
-        margin:0%;
-        margin-top: -8%;
     }
 }
 
@@ -155,16 +244,16 @@ header{
     100%{
         transform: rotate(0deg);
         width: 100%;
-        height: 8%;
-        margin: 15% 0%;
+        height: 3px;
+        margin: 0%;
     }
 }
 @keyframes unani2 {
     0%{}
     100%{
         width: 100%;
-        height: 8%;
-        margin: 15% 0%;
+        height: 3px;
+        margin: 0%;
         display: block;
     }
 }
@@ -173,8 +262,8 @@ header{
     100%{
         transform: rotate(0deg);
         width: 100%;
-        height: 8%;
-        margin: 15% 0%;
+        height: 3px;
+        margin: 0%;
     }
 }
 

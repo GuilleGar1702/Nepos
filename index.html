@@ -7,101 +7,143 @@
     <link rel="stylesheet" href="./CSS/Styles.css">
 </head>
 <body>
-    <header>
-        <section id="header">
+    <section id="Nepos">
+        <section id="headerNepos">
             <div id="logo">
                 <img src="./Img/Logo.svg" alt="Logo">
                 <h1>Nepos</h1>
             </div>
             <div id="menuButtonHaver">
                 <button id="menu">
-                    <div id="barra1"></div>
-                    <div id="barra2"></div>
-                    <div id="barra3"></div>
+                    <div id="bar1"></div>
+                    <div id="bar2"></div>
+                    <div id="bar3"></div>
                 </button>
             </div>
         </section>
-    </header>
-
-
-
-    <main>
         <section id="chatBody">
-
+            <section id="messages">
+                <!-- <div class="userBubble">
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </span>
+                </div>
+                <div class="neposBubble">
+                    <span>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                    </span>
+                </div> -->
+            </section>
         </section>
 
-        <section id="inputHaver">
-            <textarea id="userPrompt" placeholder="Your text here..."></textarea>
+        <section id="userInput">
+            <div id="inputHaver"><textarea id="userPrompt" placeholder="Your text here..."></textarea></div>
+            <div><button><img src="./Img/send.svg" alt="send"></button></div>
+            
         </section>
-    </main>
+    </section>
 
-
-    <footer>
-        
-    </footer>
-
-    
     <script type="importmap">
         {
-          "imports": {
+        "imports": {
             "@google/generative-ai": "https://esm.run/@google/generative-ai"
-          }
         }
-      </script>
-      <script type="module">
+        }
+    </script>
+    <script type="module">
         import { GoogleGenerativeAI } from "@google/generative-ai";
-      
         async function run() {
-          const API_KEY = "AIzaSyBOI0Y7S8O-AU3GMD1iwnKfQTK_5fabPkE";
-      
-
-
-          const genAI = new GoogleGenerativeAI(API_KEY);
-            const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      
-            const chat = model.startChat({
-                history: [
-                {
-                    role: "user",
-                    parts: [{ text: "Hello, I have 2 dogs in my house." }],
-                },
-                {
-                    role: "model",
-                    parts: [{ text: "Great to meet you. What would you like to know?" }],
-                },
-                ],
-                generationConfig: {
-                maxOutputTokens: 100,
-                },
-            });
-            const userPrompt = document.getElementById('userPrompt');
-            let prompt = '';
-
-          try {
-        
+        const API_KEY = "AIzaSyBOI0Y7S8O-AU3GMD1iwnKfQTK_5fabPkE";
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const chat = model.startChat({
+            history: [
+            {
+                role: "user",
+                parts: [{ text: "Hello, I have 2 dogs in my house." }],
+            },
+            {
+                role: "model",
+                parts: [{ text: "Great to meet you. What would you like to know?" }],
+            },
+            ],
+            generationConfig: {
+            maxOutputTokens: 100,
+            },
+        });
+        const userPrompt = document.getElementById('userPrompt');
+        const messages =document.getElementById('messages');
+        let prompt = '';
+        const parameters = '. Responde en español, por favor';
+        try {
             userPrompt.addEventListener('input', function() {
-              prompt = userPrompt.value;
+            prompt = userPrompt.value;
             });
-      
+    
             userPrompt.addEventListener('keydown', async function(event) {
-              if (event.key === 'Enter') {
-                const result = await chat.sendMessage(prompt);
+            if (event.key === 'Enter', prompt != '') {
+
+                const userResponse = document.createElement('span')
+                userResponse.classList.add('userBubble');
+                userResponse.textContent=prompt;
+                messages.appendChild(userResponse);
+
+                console.log('User:', prompt);
+                const result = await chat.sendMessage(prompt, parameters);
                 const response = await result.response;
                 const text = response.text();
+
                 console.log('AI:', text);
                 prompt = '';
-              }
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+
+                const neposResponse = document.createElement('span')
+                neposResponse.classList.add('neposBubble');
+                neposResponse.textContent=text;
+                messages.appendChild(neposResponse);
+
+                console.log('AI:', text);
+                prompt = '';
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
             });
-          } catch (error) {
+        } catch (error) {
             console.error('Error:', error);
-          }
         }
-      
+        }
         run();
-      </script>
+    </script>
 
 
-<script src="./JS/inputBar.js"></script>
-    
+    <!-- <script>
+        const userPrompt = document.getElementById('userPrompt');
+        const messages =document.getElementById('messages');
+        for (let index = 0; index < 15; index++) {
+            const userResponse = document.createElement('span')
+                userResponse.classList.add('userBubble');
+                userResponse.textContent='Question';
+                messages.appendChild(userResponse);
+
+            const neposResponse = document.createElement('span')
+                neposResponse.classList.add('neposBubble');
+                neposResponse.textContent='Answer';
+                messages.appendChild(neposResponse);
+                
+        }
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+    </script> -->
+
+
+    <script src="./JS/inputBar.js"></script>
+    <script src="./JS/menu.js"></script>
 </body>
 </html>
