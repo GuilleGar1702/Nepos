@@ -1,35 +1,110 @@
+import { GoogleGenerativeAI } from "@google/generative-ai";
 async function run() {
-
-  const API_KEY = "AIzaSyBOI0Y7S8O-AU3GMD1iwnKfQTK_5fabPkE";
-
-  const ofCourse = new yes;
-
-  const genAI = new ofCourse.GoogleGenerativeAI(API_KEY);
-
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
-
-  const userPrompt = document.getElementById('userPrompt');
-  let prompt = '';
-
-  userPrompt.addEventListener('input', function() {
-    prompt=userPrompt.value;
-  })
-
-  userPrompt.addEventListener('keydown', async function(event) {
-    if (event.key === 'Enter') {
-      try {
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
-        console.log('AI:', text);
-        userPrompt.value = '';
-        prompt.value = '';
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-  });
+  async function chatting() {
+    const userResponse = document.createElement('span')
+    userResponse.classList.add('userBubble');
+    userResponse.textContent=prompt;
+    messages.appendChild(userResponse);
   
-}
+    console.log('User:', prompt);
+    const result = await chat.sendMessage(prompt + parameters);
+    const response = await result.response;
+    const text = response.text();
+  
+    console.log('AI:', text);
+    prompt = '';
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+  
+    const neposResponse = document.createElement('span')
+    neposResponse.classList.add('neposBubble');
+    neposResponse.textContent=text;
+    messages.appendChild(neposResponse);
+  
+    console.log('AI:', text);
+    prompt = '';
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
+  }
 
+
+const API_KEY = "AIzaSyBOI0Y7S8O-AU3GMD1iwnKfQTK_5fabPkE";
+// const API_KEY = "AIzaSyBxytF5KX3I5AvUV__KLML7zx9wu00hDoU";
+const genAI = new GoogleGenerativeAI(API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const chat = model.startChat({
+    history: [
+    {
+        role: "user",
+        parts: [{ text: "Hola, Tengo 2 perros en mi casa." }],
+    },
+    {
+        role: "model",
+        parts: [{ text: "Un gusto conocerte. ¿En qué puedo ayudarte?" }],
+    },
+    ],
+    generationConfig: {
+    maxOutputTokens: 100,
+    },
+});
+const userPrompt = document.getElementById('userPrompt');
+const messages =document.getElementById('messages');
+const sendButton = document.getElementById('sendButton');
+let prompt = '';
+const parameters = 'No uses negritas, cursiva ni italica para escribir. Responde en español, por favor. Tu nombre será Nepos y eres un asistente para una pagina sobre reseñas de anime, series y peliculas que sabe todo sobre el tema y puede recomendar en base a los gustos y preferencias del usuario.';
+chat.sendMessage(parameters);
+try {
+    userPrompt.addEventListener('input', function() {
+    prompt = userPrompt.value;
+    });
+
+    userPrompt.addEventListener('keydown', async function(event) {
+      if (event.key === 'Enter' && prompt != '') {
+        chatting();
+          /* const userResponse = document.createElement('span')
+          userResponse.classList.add('userBubble');
+          userResponse.textContent=prompt;
+          messages.appendChild(userResponse);
+
+          console.log('User:', prompt);
+          const result = await chat.sendMessage(prompt, parameters);
+          const response = await result.response;
+          const text = response.text();
+
+          console.log('AI:', text);
+          prompt = '';
+          window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+          });
+
+          const neposResponse = document.createElement('span')
+          neposResponse.classList.add('neposBubble');
+          neposResponse.textContent=text;
+          messages.appendChild(neposResponse);
+
+          console.log('AI:', text);
+          prompt = '';
+          window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+          }); */
+      }
+    });
+
+    sendButton.addEventListener('click', async function() {
+      if (prompt != ''){
+        chatting();
+      }
+    })
+
+} catch (error) {
+    console.error('Error:', error);
+}
+}
 run();

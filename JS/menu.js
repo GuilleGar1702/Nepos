@@ -1,8 +1,6 @@
-const menu = document.getElementById('menu');
 const bar1 = document.getElementById('bar1');
 const bar2 = document.getElementById('bar2');
 const bar3 = document.getElementById('bar3');
-const sidePanel = document.getElementById('side-panel');
 
 menu.addEventListener('click', () => {
     if(!bar1.classList.contains('animated-button1')){
@@ -20,8 +18,6 @@ menu.addEventListener('click', () => {
         bar1.classList.add('unanimated-button1');
         bar2.classList.add('unanimated-button2');
         bar3.classList.add('unanimated-button3');
-        sidePanel.classList.remove('animated-panel');
-        sidePanel.classList.add('unanimated-panel');
     }
     
   });

@@ -11,7 +11,7 @@
     <section id="Nepos">
         <section id="headerNepos">
             <div id="logo">
-                <img src="./Img/Logo.svg" alt="Logo">
+                <img src="./Img/LogoDark.svg" alt="Logo">
                 <h1>Nepos</h1>
             </div>
             <div id="menuButtonHaver">
@@ -39,7 +39,7 @@
 
         <section id="userInput">
             <div id="inputHaver"><textarea id="userPrompt" placeholder="Your text here..."></textarea></div>
-            <div><button><img src="./Img/send.svg" alt="send"></button></div>
+            <div><button><img src="./Img/send.svg" alt="send" id="sendButton"></button></div>
             
         </section>
     </section>
@@ -51,75 +51,7 @@
         }
         }
     </script>
-    <script type="module">
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-        async function run() {
-        const API_KEY = "AIzaSyBOI0Y7S8O-AU3GMD1iwnKfQTK_5fabPkE";
-        const genAI = new GoogleGenerativeAI(API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-        const chat = model.startChat({
-            history: [
-            {
-                role: "user",
-                parts: [{ text: "Hola, Tengo 2 perros en mi casa." }],
-            },
-            {
-                role: "model",
-                parts: [{ text: "Un gusto conocerte. ¿En qué puedo ayudarte?" }],
-            },
-            ],
-            generationConfig: {
-            maxOutputTokens: 100,
-            },
-        });
-        const userPrompt = document.getElementById('userPrompt');
-        const messages =document.getElementById('messages');
-        let prompt = '';
-        const parameters = '. Responde en español, por favor';
-        try {
-            userPrompt.addEventListener('input', function() {
-            prompt = userPrompt.value;
-            });
-    
-            userPrompt.addEventListener('keydown', async function(event) {
-            if (event.key === 'Enter' && prompt != '') {
-
-                const userResponse = document.createElement('span')
-                userResponse.classList.add('userBubble');
-                userResponse.textContent=prompt;
-                messages.appendChild(userResponse);
-
-                console.log('User:', prompt);
-                const result = await chat.sendMessage(prompt, parameters);
-                const response = await result.response;
-                const text = response.text();
-
-                console.log('AI:', text);
-                prompt = '';
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth'
-                });
-
-                const neposResponse = document.createElement('span')
-                neposResponse.classList.add('neposBubble');
-                neposResponse.textContent=text;
-                messages.appendChild(neposResponse);
-
-                console.log('AI:', text);
-                prompt = '';
-                window.scrollTo({
-                    top: document.body.scrollHeight,
-                    behavior: 'smooth'
-                });
-            }
-            });
-        } catch (error) {
-            console.error('Error:', error);
-        }
-        }
-        run();
-    </script>
+    <script src="./JS/gemini.js" type="module"></script>
 
 
     <!-- <script>
