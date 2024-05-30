@@ -5,18 +5,16 @@ async function run() {
     userResponse.classList.add('userBubble');
     userResponse.textContent=prompt;
     messages.appendChild(userResponse);
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+    });
   
     console.log('User:', prompt);
     const result = await chat.sendMessage(prompt + parameters);
     const response = await result.response;
     const text = response.text();
   
-    console.log('AI:', text);
-    prompt = '';
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-    });
   
     const neposResponse = document.createElement('span')
     neposResponse.classList.add('neposBubble');
