@@ -33,7 +33,7 @@ body{
 
 #headerNepos{
     z-index: 2;
-    position: sticky;
+    position: fixed;
     top: 0%;
     left: 0%;
     right: 0%;
@@ -69,14 +69,13 @@ body{
     position: absolute;
     left: 0;
     right: 0;
-    top: 75px;
     
 }
 #messages{
     z-index: 1;
     height: fit-content;
     position: absolute;
-    top:0px;
+    top:75px;
     bottom: 0px;
     right: 10px;
     left: 10px;
@@ -110,6 +109,10 @@ body{
     color: #111111;
     justify-content: center;
 }
+#inputHaver:active{
+    border: none;
+}
+
 #userPrompt{
     width: 85%;
     min-height: 50px;
