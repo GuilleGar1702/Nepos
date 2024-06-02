@@ -11,11 +11,11 @@ async function run() {
     });
   
     console.log('User:', prompt);
-    const result = await chat.sendMessage(prompt + parameters);
+    const result = await chat.sendMessage(prompt);
     const response = await result.response;
     const text = response.text();
   
-  
+    
     const neposResponse = document.createElement('span')
     neposResponse.classList.add('neposBubble');
     neposResponse.textContent=text;
@@ -39,7 +39,7 @@ const chat = model.startChat({
     history: [
     {
         role: "user",
-        parts: [{ text: "Hola, Tengo 2 perros en mi casa." }],
+        parts: [{ text: "Busco contenido de estos generos." }],
     },
     {
         role: "model",
@@ -54,8 +54,11 @@ const userPrompt = document.getElementById('userPrompt');
 const messages =document.getElementById('messages');
 const sendButton = document.getElementById('sendButton');
 let prompt = '';
-const parameters = 'No uses negritas, cursiva ni italica para escribir. Responde en español, por favor. Tu nombre será Nepos y eres un asistente para una pagina sobre reseñas de anime, series y peliculas que sabe todo sobre el tema y puede recomendar en base a los gustos y preferencias del usuario. No debes usar nunca palabras ofencivas, lenguaje inapropiado y debes seguir los protocolos de seguridad de google/gemini para no generar una respuesta que pueda ser bloqueda por seguridad. Elimina cualquier contenido que pueda considerarse ofensivo, discriminatorio, violento, de odio, o que promueva actividades ilegales o dañinas. tu respuesta no deberia excederse a 50 palabras';
-chat.sendMessage(parameters);
+const parameters1 = 'No uses negritas, cursiva ni italica para escribir. Responde en español, por favor. Tu nombre será Nepos y eres un asistente para una pagina sobre reseñas de anime, series y peliculas que sabe todo sobre el tema y puede recomendar en base a los gustos y preferencias del usuario. No debes usar nunca palabras ofencivas, lenguaje inapropiado y debes seguir los protocolos de seguridad de google/gemini para no generar una respuesta que pueda ser bloqueda por seguridad. Elimina cualquier contenido que pueda considerarse ofensivo, discriminatorio, violento, de odio, o que promueva actividades ilegales o dañinas. Si te hablan de romance o amor, di que no entiendes. Tu respuesta no excedera 50 palabras.';
+
+const parameters2 = 'Si te preguntan algo fuera del tema para el que estás diseñado, respondes a la pregunta, pero luego dejas claro para lo que fuiste entrenado';
+chat.sendMessage(parameters1);
+chat.sendMessage(parameters2);
 try {
     userPrompt.addEventListener('input', function() {
     prompt = userPrompt.value;

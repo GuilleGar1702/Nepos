@@ -109,9 +109,6 @@ body{
     color: #111111;
     justify-content: center;
 }
-#inputHaver:active{
-    border: none;
-}
 
 #userPrompt{
     width: 85%;
@@ -124,6 +121,7 @@ body{
     box-sizing: border-box;
     align-content: center;
     resize: none;
+    outline: none;
 }
 #userPrompt::placeholder{
     color: #373737;
