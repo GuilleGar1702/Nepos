@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Nepos</title>
     <link rel="stylesheet" href="./CSS/Styles.css">
     <link rel="shortcut icon" href="./Img/Logo.svg" type="image/x-icon">
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -17,6 +25,15 @@
                 </button>
                 <h1>Nepos</h1>
             </div>
+            <div id="search" class="invisible">
+                <input type="text" placeholder="Buscar..." id="searchInput">
+                <button id="btnN" class="btnNP">
+                    <img src="./Img/Back.svg" alt="next">
+                </button>
+                <button id="btnP" class="btnNP">
+                    <img src="./Img/Back.svg" alt="pre">
+                </button>
+            </div>
             <div id="menuButtonHaver">
                 <button id="menu">
                     <div id="bar1"></div>
@@ -27,11 +44,11 @@
         </section>
         <section id="sideMenu">
             <div id="options">
-                <button class="option">Nuevo Chat</button>
-                <button class="option">Buscar</button>
-                <button class="option">Vaciar chat</button>
+                <button id="newChat" class="option">Nuevo Chat</button>
+                <button id="find" class="option">Buscar</button>
+                <!-- <button class="option">Vaciar chat</button> -->
                 <button id="pdfExport" class="option">Exportar a PDF</button>
-            </divoption>
+            </div>
         </section>
         <section id="chatBody">
             <section id="messages">
@@ -49,9 +66,8 @@
         </section>
 
         <section id="userInput">
-            <div id="inputHaver"><textarea id="userPrompt" placeholder="Mensaje..."></textarea></div>
-            <div><button><img src="./Img/send.svg" alt="send" id="sendButton"></button></div>
-            
+            <div id="inputHaver" class="niceBorder"><textarea id="userPrompt" placeholder="Mensaje..."></textarea></div>
+            <div><button class="niceBorder"><img src="./Img/send.svg" alt="send" id="sendButton"></button></div>
         </section>
     </section>
 

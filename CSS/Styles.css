@@ -1,12 +1,12 @@
 *{
-    font-family: sans-serif;
+    font-family: roboto;
 }
 
 body{
     width: 100vw;
     height: 100vh;
     margin: 0%;
-    background-image: radial-gradient(#111111, #262524, #3B3936);
+    background-image: radial-gradient(#111111, #202020);
     background-size: 800% 800%;
     animation: backgroundAnimation 10s ease infinite;
 }
@@ -20,7 +20,6 @@ body{
         background-position: 0% 50%;
     }
 }
-
 
 
 
@@ -39,17 +38,22 @@ body{
     right: 0%;
     height: 76px;
     display: flex;
-    color: #111111;
+    color: #c03540;
     justify-content: space-between;
     align-items: center;
-    background-color: #843871;
+    background-color: #111111;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 #logo{
-    width: 35%;
+    width: 150px;
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
 }
 #logo img{
     width: 35%;
@@ -72,13 +76,57 @@ body{
     align-content: center;
 }
 
+
+#search{
+    display: flex;
+    margin-left: 5%;
+}
+.btnNP{
+    width: 10%;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+#btnN img{
+    transform: rotate(90deg);
+}
+#btnP img{
+    transform: rotate(-90deg);
+}
+#searchInput{
+    width: 0%;
+    height: 0px;
+    background-color: transparent;
+    border-color: transparent;
+    padding-left: 15px;
+    color: #c03540;
+
+    font-size: 20px;
+    outline: none;
+}
+#searchInput::placeholder{
+    color: #373737;
+}
+
+
+
+
+
 #sideMenu{
     z-index: 2;
-    position: absolute;
-    top: -84px;
-    width: 100%;
-    height: 160px;
-    background-color: #974282;
+    position: fixed;
+    top: -45px;
+    /* top: -84px; */
+    width: 40%;
+    right: 0px;
+    height: 120px;
+    /* height: 160px; */
+    background-color: #c03540;
+    border-bottom-left-radius: 10px;
 }
 
 #sideMenu div{
@@ -93,20 +141,28 @@ body{
     border: none;
 }
 
-
+.option:active{
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #a61e29;
+    border: none;
+}
 
 
 
 
 #chatBody{
     position: absolute;
+    width: 100%;
+    height: 100%;
     
 }
 #messages{
     z-index: 1;
     height: fit-content;
     position: absolute;
-    top:75px;
+    top:76px;
     bottom: 0px;
     right: 10px;
     left: 10px;
@@ -134,10 +190,9 @@ body{
 #inputHaver{
     width: 85%;
     height: auto;
-    background-color: #843871;
+    background-color: #111111;
     display: flex;
-    border-radius: 50px;
-    color: #111111;
+    color: white;
     justify-content: center;
 }
 
@@ -146,7 +201,7 @@ body{
     min-height: 50px;
     border: none;
     background-color: transparent;
-    color: #111111;
+    color: #c03540;
     font-size: 20px;
     overflow-wrap: break-word;
     box-sizing: border-box;
@@ -165,14 +220,34 @@ body{
     align-items: center;
     width: 50px;
     aspect-ratio: 1/1;
-    background-color: #843871;
-    border-style: none;
-    color: #111111;
-    border-radius: 50%;
+
 }
 #userInput button img{
     width: 75%;
 }
+
+
+
+
+/*------------------- nice border -------------------*/
+
+.niceBorder{
+    --start-color: #C03540;
+    --end-color: #FFA3AA;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid transparent;
+    background: linear-gradient(#111111, #111111) padding-box, linear-gradient(90deg, var(--start-color), var(--end-color)) border-box;
+    border-radius: 50px;
+    transition: background-position 0.3s;
+}
+.invisible{
+    visibility: hidden;
+}
+
+
+
 
 
 
@@ -181,36 +256,32 @@ body{
 .userBubble{
     width: 75%;
     height: fit-content;
-    color: #111111;
-    background-color: #a65a93;
+    color: #c03540;
+    background-color: #111111;
     border-radius: 10px;
+    border-width: 2px;
+    border-color: #c03540;
+    border-style: solid;
     border-bottom-right-radius: 0px;
     overflow-wrap: break-word;
     padding: 3%;
     justify-self: right;
     margin-top: 10px;
-    
+    font-weight: 400;
 }
 .neposBubble{
     width: 75%;
     height: fit-content;
     color: #111111;
-    background-color: #843871;
+    background-color: #c03540;
     border-radius: 10px;
     border-bottom-left-radius: 0px;
     overflow-wrap: break-word;
     padding: 3%;
     justify-self: left;
     margin-top: 10px;
+    font-weight: 500;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -229,7 +300,7 @@ body{
     justify-items: center;
 }
 #bar1, #bar2, #bar3{
-    background-color: #111111;
+    background-color: #c03540;
     width: 6px;
     height: 6px;
     border-radius: 5px;
@@ -335,39 +406,14 @@ body{
 
 /* options  */
 
-/* .animated-menu{
-    animation: menuAni 0.3s ease-in-out forwards;
-}
-
-@keyframes menuAni {
-    0%{
-        height: 0px;
-    }
-    100%{
-        height: 160px;
-    }
-}
-
-
-.unanimated-menu{
-    animation: menuUnAni 0.3s ease-in-out forwards;
-}
-
-@keyframes menuUnAni {
-    0%{
-        height: 160px;
-    }
-    100%{
-        height: 0px;
-    }
-} */
 .animated-menu{
     animation: menuAni 0.3s ease-in-out forwards;
 }
 
 @keyframes menuAni {
     0%{
-        top: -84px;
+        top: -45px;
+        /* top: -84px; */
     }
     100%{
         top: 76px;
@@ -384,32 +430,96 @@ body{
         top: 76px;
     }
     100%{
-        top: -84px;
+        top: -45px;
+        /* top: -84px; */
     }
 }
 
 
+/* Focus */
 
-.animated-option{
-    animation: optionUnAni 0.3s ease-in-out forwards;
+.focusN{
+    animation: aniFocusN 2s ease-in-out forwards;
 }
-@keyframes buttonAni {
+@keyframes aniFocusN {
     0%{
+        background-color: #ffa2aa;
     }
     100%{
+        background-color: #c03540;
     }
 }
 
-.unanimated-option{
-    animation: optionUnAni 0.3s ease-in-out forwards;
+.focusU{
+    animation: aniFocusU 2s ease-in-out forwards;
 }
-@keyframes buttonUnAni {
+@keyframes aniFocusU {
     0%{
-        height: 40px;
+        color: #111111;
+        background-color: #ffa2aa;
     }
-    99%{
+    100%{
+        color: #c03540;
+        background-color: #111111;
+    }
+}
+
+
+
+/* search */
+
+.inSearch{
+    animation: aniSearch 0.3s ease-in-out forwards;
+}
+@keyframes aniSearch {
+    0%{
+        width: 0%;
         height: 0px;
+        background-color: transparent;
     }
     100%{
+        width: 90%;
+        height: 40px;
+        /* border-color: #c03540; */
+        background-color: #111111;
+    }
+}
+.unSearch{
+    animation: unAniSearch 0.3s ease-in-out forwards;
+}
+@keyframes unAniSearch {
+    0%{
+        width: 90%;
+        height: 40px;
+        background-color: #111111;
+    }
+    100%{
+        width: 0%;
+        height: 0px;
+        background-color: transparent;
+    }
+}
+
+
+.inSearchLogo{
+    animation: aniSearchLogo 0.3s ease-in-out forwards;
+}
+@keyframes aniSearchLogo {
+    0%{
+        left: 0px;
+    }
+    100%{
+        left: -150px;
+    }
+}
+.unSearchLogo{
+    animation: unAniSearchLogo 0.3s ease-in-out forwards;
+}
+@keyframes unAniSearchLogo {
+    0%{
+        left: -150px;
+    }
+    100%{
+        left: 0px;
     }
 }
