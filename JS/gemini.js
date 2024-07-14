@@ -89,7 +89,7 @@ let searchIndex=0;
 // const API_KEY = "AIzaSyBxytF5KX3I5AvUV__KLML7zx9wu00hDoU";
 // const API_KEY = "AIzaSyBmEeYaIKu-7nkdWCmsI5208WOdjkU3Prw";
 
-const API_KEY = "AIzaSyCJOhUe5BLoqPYB7BvMvOvVAvQWIKsNquM";
+// const API_KEY = "AIzaSyCJOhUe5BLoqPYB7BvMvOvVAvQWIKsNquM";
 
 
 
@@ -119,7 +119,7 @@ const parameters1 = 'Responde en español. Tu nombre será Nepos y eres un asist
 
 const parameters2 = 'Si te preguntan algo fuera del tema para el que estás diseñado, respondes a la pregunta, pero luego dejas claro para lo que fuiste entrenado. Tu respuesta no excedera 40 palabras. No uses negritas, cursiva ni italica para escribir. Si te hablan de romance o amor, di que no entiendes.';
 chat.sendMessage(parameters1);
-// chat.sendMessage(parameters2);
+chat.sendMessage(parameters2);
 
 
 async function run() {

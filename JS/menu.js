@@ -8,6 +8,7 @@ const find = document.getElementById('find');
 const userInput = document.getElementById('userInput');
 const messages = document.getElementById('messages');
 const chatBody = document.getElementById('chatBody');
+// const Nepos = document.getElementById('Nepos');
 const Logo = document.getElementById('logo');
 const menu = document.getElementById('menu');
 const search = document.getElementById('search');

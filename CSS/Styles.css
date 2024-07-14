@@ -33,9 +33,9 @@ body{
 #headerNepos{
     z-index: 3;
     position: fixed;
-    top: 0%;
-    left: 0%;
-    right: 0%;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 76px;
     display: flex;
     color: #c03540;
@@ -65,6 +65,7 @@ body{
     width: 30%;
     border: none;
     background-color: transparent;
+    outline: none;
 }
 #logo button img{
     width: 100%;
@@ -146,7 +147,7 @@ body{
     font-size: 16px;
     font-weight: bold;
     background-color: #a61e29;
-    border: none;
+    border-bottom-left-radius: 10px;
 }
 
 
@@ -298,6 +299,7 @@ body{
     display: grid;
     align-content: center;
     justify-items: center;
+    outline: none;
 }
 #bar1, #bar2, #bar3{
     background-color: #c03540;
