@@ -94,7 +94,7 @@ const API_KEY = "AIzaSyBmEeYaIKu-7nkdWCmsI5208WOdjkU3Prw";
 
 
 const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 // const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 const chat = model.startChat({
     history: [
